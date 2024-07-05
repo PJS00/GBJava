@@ -12,13 +12,13 @@
  * select * from students where name='Ivanov' and country='Russia' and city='Moscow'
  */
 
-package GB.Seminar_1.HW2;
+package GB.Seminar_2.HW2;
 
-import java.lang.reflect.Type;
 import java.util.Arrays;
 
 public class Task1 {
     public static void main(String[] args) {
+        String QUERY = "select * from students where ";
         String PARAMS = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":\"null\"} ";
         String[] result = PARAMS
             .replace("{", "")
@@ -28,31 +28,52 @@ public class Task1 {
             .split(",");
 
         StringBuilder sql_result = new StringBuilder();
-        sql_result.append("select * from students where ");
+        sql_result.append(QUERY);
 
+        String[] options = new String[result.length];
         for (int i = 0; i < result.length; i++) {
             String[] pair = result[i].split(":");
+            StringBuilder option = new StringBuilder();
             if (!pair[1].equals("null")) {
-                sql_result.append(pair[0]);
-                sql_result.append("='");
-                sql_result.append(pair[1]);
-                sql_result.append("'");
-                if (i != result.length - 1) {
-                    sql_result.append(" and ");
-                }
+                option.append(pair[0])
+                .append("='")
+                .append(pair[1])
+                .append("'");
+                options[i] = option.toString();
             }
 
         }
+        sql_result.append(String.join(" and ", Arrays.copyOf(options, options.length - 1)));
         System.out.println(sql_result);
     }
 }
 
 class Answer {
     public static StringBuilder answer(String QUERY, String PARAMS) {
-        StringBuilder result = new StringBuilder();
-        result.append(QUERY);
+        StringBuilder sql_result = new StringBuilder();
+        sql_result.append(QUERY);
+        String[] result = PARAMS
+                .replace("{", "")
+                .replace("}", "")
+                .replace("\"", "")
+                .replace(" ", "")
+                .split(",");
 
-        return result;
+        String[] options = new String[result.length];
+        for (int i = 0; i < result.length; i++) {
+            String[] pair = result[i].split(":");
+            StringBuilder option = new StringBuilder();
+            if (!pair[1].equals("null")) {
+                option.append(pair[0])
+                        .append("='")
+                        .append(pair[1])
+                        .append("'");
+                options[i] = option.toString();
+            }
+
+        }
+        sql_result.append(String.join(" and ", Arrays.copyOf(options, options.length - 1)));
+        return sql_result;
     }
 }
 

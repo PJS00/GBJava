@@ -9,12 +9,11 @@
  */
 
 
-package GB.Seminar_2.CW1;
+package GB.Seminar_2.CW2;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 public class Task7 {
     public static void main(String[] args) throws IOException {

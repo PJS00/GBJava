@@ -5,7 +5,7 @@
  * boolean значение).
  */
 
-package GB.Seminar_2.CW1;
+package GB.Seminar_2.CW2;
 
 public class Task5 {
     public static void main(String[] args) {

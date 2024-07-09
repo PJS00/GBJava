@@ -1,4 +1,4 @@
-package GB.Seminar_2.CW1;
+package GB.Seminar_2.CW2;
 
 import java.util.Scanner;
 

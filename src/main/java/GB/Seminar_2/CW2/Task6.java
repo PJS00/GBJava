@@ -6,7 +6,7 @@
  * Решение от преподавателя
  */
 
-package GB.Seminar_2.CW1;
+package GB.Seminar_2.CW2;
 
 public class Task6 {
     public static void main(String[] args) {
